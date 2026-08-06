@@ -23,7 +23,8 @@ ROAD_CLASSES = [
 ]
 ZONING_CATEGORIES = ["Residential", "Commercial", "Industrial", "Mixed"]
 
-
+# Creates a panel (a panel is a long dataframe with a segment_id, year, and outcome variable) with a known treatment effect.
+# rather than using real data, we simulate a panel with a known treatment effect. This allows us to validate our synthetic control method (SCM) against ground truth before applying it to the real data
 def simulate_panel(
     n_control: int = 150,
     n_treated: int = 25,
@@ -39,7 +40,7 @@ def simulate_panel(
     """Simulate a tidy long panel with a known, recoverable treatment effect.
 
     Every segment has a base AADT, a shared regional growth trend, and
-    idiosyncratic noise. Treated segments get an additional
+     noise. Treated segments get an additional
     `treatment_effect_pct` multiplicative bump starting in `treat_year`.
     Returns a DataFrame conforming to panel_schema.PANEL_COLUMNS.
     """

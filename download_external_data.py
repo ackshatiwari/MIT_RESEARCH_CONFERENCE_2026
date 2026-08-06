@@ -35,10 +35,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 try:
-    # Works around an OpenSSL 3.x cert-chain validation issue seen on some
-    # Windows machines (security software injecting a root CA whose Basic
-    # Constraints aren't marked critical) by validating via the OS trust
-    # store instead of Python's bundled one. `pip install truststore`.
+
     import truststore
 
     truststore.inject_into_ssl()
